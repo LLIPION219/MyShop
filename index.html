@@ -1,0 +1,55 @@
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Бронювання квитків</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <a href="#main-content" class="skip-link">Перейти до основного вмісту</a>
+
+  <header>
+    <h1>Подія року: Концерт у вашому місті!</h1>
+    <nav>
+      <ul>
+        <li><a href="#about-event">Про подію</a></li>
+        <li><a href="#tickets">Квитки</a></li>
+        <li><a href="#contact">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section id="about-event">
+      <h2>Про подію</h2>
+      <p>Найочікуваніший концерт року з неймовірною атмосферою та незабутніми емоціями! Не пропустіть!</p>
+    </section>
+
+    <section id="tickets">
+      <h2>Квитки</h2>
+      <form id="booking-form" onsubmit="event.preventDefault(); this.querySelector('button').classList.add('clicked');">
+        <label for="name">Ім'я:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="quantity">Кількість квитків:</label>
+        <input type="number" id="quantity" name="quantity" min="1" max="10" required>
+
+        <button type="submit">Забронювати</button>
+        <div class="confirmation-message">Дякуємо за бронювання!</div>
+      </form>
+    </section>
+
+    <section id="contact">
+      <h2>Контакти</h2>
+      <p>Зв'яжіться з нами за email: <a href="mailto:info@tickets2025.com">info@tickets2025.com</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Бронювання квитків. Усі права захищено.</p>
+  </footer>
+</body>
+</html>

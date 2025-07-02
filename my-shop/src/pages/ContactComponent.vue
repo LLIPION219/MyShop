@@ -21,5 +21,56 @@
 
     <h3>Форма зворотного зв’язку</h3>
     <p>Незабаром тут з’явиться форма, щоб ти міг безпосередньо написати нам!</p>
+
+    <p class="contact-thanks">Ми цінуємо кожен ваш відгук та звернення 💌</p>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'ContactComponent'
+}
+</script>
+
+<style scoped>
+.contact-page {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 40px 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  font-size: 15px;
+  color: #333;
+}
+
+.contact-page h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-size: 26px;
+}
+
+.contact-page h3 {
+  margin-top: 25px;
+  color: #444;
+  font-size: 18px;
+}
+
+.contact-page ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.contact-page li {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.contact-thanks {
+  margin-top: 40px;
+  text-align: center;
+  font-style: italic;
+  color: #555;
+}
+</style>

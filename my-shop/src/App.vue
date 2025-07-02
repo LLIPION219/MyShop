@@ -7,7 +7,8 @@
     <nav class="main-nav">
       <router-link to="/admin/products" active-class="active-link" class="nav-button">🗂️ Продукти</router-link>
       <router-link to="/admin/reviews" active-class="active-link" class="nav-button">📝 Відгуки</router-link>
-      <router-link to="/contact" active-class="active-link" class="nav-button">📞 Контакти</router-link>
+      <router-link to="/admin/contact" active-class="active-link" class="nav-button">📞 Контакти</router-link>
+
     </nav>
 
     <main class="main-content">
@@ -30,7 +31,7 @@ export default {
 </script>
 
 <style>
-/* Контейнер сторінки — flexbox по вертикалі, мінімальна висота 100vh */
+
 .app-container {
   display: flex;
   flex-direction: column;
@@ -42,7 +43,7 @@ export default {
   padding: 0;
 }
 
-/* Шапка - заголовок по центру, стильний */
+
 .main-header {
   background-color: #3498db;
   padding: 25px 20px 15px;
@@ -59,13 +60,13 @@ export default {
   margin: 0;
 }
 
-/* Навігація — кнопки по центру з відступом */
+
 .main-nav {
   background-color: #2980b9;
   padding: 15px 0 25px;
   display: flex;
   justify-content: center;
-  gap: 25px; /* відстань між кнопками */
+  gap: 25px; 
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
@@ -91,7 +92,7 @@ export default {
   cursor: pointer;
 }
 
-/* Основний контент займає весь вільний простір */
+
 .main-content {
   flex: 1;
   padding: 30px 20px;
@@ -103,7 +104,7 @@ export default {
   margin: 20px auto 40px;
 }
 
-/* Футер "прилипає" до низу сторінки */
+
 footer {
   background-color: #2c3e50;
   color: #bdc3c7;

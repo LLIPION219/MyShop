@@ -1,23 +1,35 @@
 <template>
-  <div class="product-list">
-<ProductCard
-v-for="product in products"
-:key="product.id"
-:name="product.name"
-:description="product.description"
-:price="product.price"
-:image="product.image"/>
+  <div class="product-list-wrapper">
+    <input
+      type="text"
+      v-model="searchQuery"
+      placeholder="🔍 Пошук товарів..."
+      class="search-input"
+    />
+
+    <div class="product-list">
+      <ProductCard
+        v-for="product in filteredProducts"
+        :key="product.id || product.name"
+        :name="product.name"
+        :description="product.description"
+        :price="product.price"
+        :image="product.image"
+      />
+    </div>
   </div>
 </template>
 
 <script>
 import ProductCard from "@/components/ProductCard.vue";
+
 export default {
   components: {
     ProductCard,
   },
   data() {
     return {
+      searchQuery: "",
       products: [
         {
           name: "Смартфон Samsung Galaxy S23",
@@ -62,11 +74,40 @@ export default {
       ],
     };
   },
+  computed: {
+    filteredProducts() {
+      const query = this.searchQuery.toLowerCase();
+      return this.products.filter(product =>
+        product.name.toLowerCase().includes(query)
+      );
+    }
+  }
 };
 </script>
 
 <style scoped>
-.product-list{
+.product-list-wrapper {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+}
+
+.product-list {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;

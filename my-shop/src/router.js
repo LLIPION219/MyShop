@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import AdminDashboard from './pages/AdminDashboard.vue';
 import ManageProducts from './pages/ManageProducts.vue';
 import ManageReviews from './pages/ManageReviews.vue';
-import ContactComponent from './pages/ContactComponent.vue'; // ✅ додаємо
+import ContactComponent from './pages/ContactComponent.vue';
 
 const routes = [
   {
@@ -19,11 +19,8 @@ const routes = [
     children: [
       { path: 'products', component: ManageProducts },
       { path: 'reviews', component: ManageReviews },
+      { path: 'contact', component: ContactComponent }, // ✅ переміщено сюди
     ],
-  },
-  {
-    path: '/contact', // ✅ новий маршрут
-    component: ContactComponent,
   },
 ];
 

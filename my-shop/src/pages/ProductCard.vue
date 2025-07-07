@@ -22,16 +22,10 @@ export default {
         price: this.price,
         image: this.image,
       };
-
-      // Додаємо товар у локальне сховище
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
       cart.push(product);
       localStorage.setItem("cart", JSON.stringify(cart));
-
-      // 🔄 Генеруємо подію для оновлення кошика в App.vue
-      window.dispatchEvent(new Event("storage"));
-
-      alert(`✅ Додано в кошик: ${this.name}`);
+      alert(`Додано в кошик: ${this.name}`);
     },
   },
 };

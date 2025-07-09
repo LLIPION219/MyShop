@@ -9,8 +9,9 @@
       </div>
 
       <div class="auth-info">
-        <template v-if="authUser">
-          Привіт, {{ authUser }}! 
+        <!-- Показуємо лише після входу -->
+        <template v-if="authUser && $route.path !== '/login'">
+          Привіт, {{ authUser }}!
           <button @click="logout" class="logout-button">Вийти</button>
         </template>
         <template v-else>
@@ -19,7 +20,7 @@
       </div>
     </header>
 
-    <nav class="main-nav" v-if="authUser">
+    <nav class="main-nav" v-if="authUser && $route.path !== '/login'">
       <router-link to="/admin/products" active-class="active-link" class="nav-button">🗂️ Продукти</router-link>
       <router-link to="/admin/reviews" active-class="active-link" class="nav-button">📝 Відгуки</router-link>
       <router-link to="/admin/contact" active-class="active-link" class="nav-button">📞 Контакти</router-link>
@@ -42,15 +43,30 @@ export default {
   data() {
     return {
       cartCount: 0,
-      authUser: localStorage.getItem("authUser") || null,
+      authUser: null,
     };
   },
   mounted() {
     this.updateCartCount();
+
+    // Показуємо authUser лише якщо НЕ на сторінці входу
+    const user = localStorage.getItem("authUser");
+    if (user && this.$route.path !== "/login") {
+      this.authUser = user;
+    }
+
+    // Слухаємо зміну localStorage (інші вкладки або оновлення)
     window.addEventListener("storage", () => {
       this.authUser = localStorage.getItem("authUser");
       this.updateCartCount();
     });
+  },
+  watch: {
+    // Якщо маршрут змінюється — оновлюємо authUser
+    '$route.path'(newPath) {
+      const user = localStorage.getItem("authUser");
+      this.authUser = user && newPath !== "/login" ? user : null;
+    }
   },
   methods: {
     updateCartCount() {
@@ -73,8 +89,7 @@ export default {
 </script>
 
 <style>
-/* Тут можна додати свої стилі для меню, кнопок, хедера */
-
+/* Стилі ті самі */
 .app-container {
   display: flex;
   flex-direction: column;

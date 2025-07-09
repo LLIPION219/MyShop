@@ -1,15 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router';
+
 import ManageProducts from './pages/ManageProducts.vue';
 import ManageReviews from './pages/ManageReviews.vue';
 import ContactComponent from './pages/ContactComponent.vue';
 import CartView from './pages/CartView.vue';
 import LoginPage from './pages/LoginPage.vue';
-
-// Якщо хочеш, пізніше можна додати ProfilePage
-// import ProfilePage from './pages/ProfilePage.vue';
+import ProfilePage from './pages/ProfilePage.vue';
+import HomePage from './pages/HomePage.vue';
+import NotFound from './pages/NotFound.vue';
 
 const routes = [
-  { path: '/', redirect: '/admin/products' },
+  // Головна сторінка
+  { path: '/', component: HomePage },
+
+  // Адмін-панель (захищена сторінка)
+  { path: '/profile', component: ProfilePage },
 
   // Основні сторінки адмінки
   { path: '/admin/products', component: ManageProducts },
@@ -22,13 +27,26 @@ const routes = [
   // Логін
   { path: '/login', component: LoginPage },
 
-  // Профіль (якщо зробиш окрему сторінку)
-  // { path: '/profile', component: ProfilePage },
+  // Сторінка 404
+  { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
 ];
 
 const router = createRouter({
-  history: createWebHistory('/my-shop/'), // або '/' залежно від базового шляху
+  history: createWebHistory('/my-shop/'), // або '/' якщо не в підкаталозі
   routes,
+});
+
+// Глобальний захист маршруту (опціонально)
+router.beforeEach((to, from, next) => {
+  const publicPages = ['/login'];
+  const authRequired = !publicPages.includes(to.path);
+  const loggedIn = localStorage.getItem('authUser');
+
+  if (authRequired && !loggedIn && to.path.startsWith('/admin')) {
+    return next('/login');
+  }
+
+  next();
 });
 
 export default router;

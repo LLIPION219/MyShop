@@ -35,8 +35,6 @@ export default {
       if (user) {
         localStorage.setItem("authUser", this.username);
 
-        // Оновлюємо authUser у головному компоненті, щоб меню оновилось
-        this.$root.updateAuthUser(this.username);
 
         this.$router.push("/admin/products");
       } else {

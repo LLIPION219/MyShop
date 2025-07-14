@@ -1,13 +1,15 @@
 <template>
-<div>
-<ProductList />
-</div>
+  <div>
+    <ProductList />
+  </div>
 </template>
+
 <script>
 import ProductList from '../components/ProductList.vue';
+
 export default {
-components: {
-ProductList,
-},
+  components: {
+    ProductList,
+  },
 };
 </script>

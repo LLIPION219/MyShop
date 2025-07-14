@@ -6,6 +6,7 @@ import CartView from './pages/CartView.vue';
 import LoginPage from './pages/LoginPage.vue';
 import ProfilePage from './pages/ProfilePage.vue';
 import AdminDashboard from './pages/AdminDashboard.vue';
+import AdminPanel from './pages/AdminPanel.vue'; // <-- імпорт адмін панелі
 
 const routes = [
   { path: '/', redirect: '/admin/products' },
@@ -15,6 +16,7 @@ const routes = [
   { path: '/admin/products', component: ManageProducts },
   { path: '/admin/reviews', component: ManageReviews },
   { path: '/admin/contact', component: ContactComponent },
+  { path: '/admin/panel', component: AdminPanel },  // <-- маршрут для адмін панелі
 
   { path: '/cart', component: CartView },
   { path: '/login', component: LoginPage },

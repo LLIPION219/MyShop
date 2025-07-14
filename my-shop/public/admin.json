@@ -1,4 +1,20 @@
 [
-  { "username": "admin", "password": "12345" },
-  { "username": "user", "password": "qwerty" }
+  {
+    "username": "admin",
+    "password": "12345",
+    "name": "Адміністратор",
+    "role": "Адміністратор",
+    "phone": "+380501112233",
+    "email": "admin@example.com",
+    "photo": "/images/admin-photo.jpg"
+  },
+  {
+    "username": "user",
+    "password": "qwerty",
+    "name": "Звичайний користувач",
+    "role": "Користувач",
+    "phone": "+380671234567",
+    "email": "user@example.com",
+    "photo": "/images/user-photo.jpg"
+  }
 ]
